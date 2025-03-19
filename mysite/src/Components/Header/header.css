@@ -1,0 +1,18 @@
+.header {
+    text-align: center; /* Center the text horizontally */
+    padding: 10px 0; /* Add some padding for spacing */
+    position: fixed; /* Fix the header at the top */
+    top: 0; /* Position at the top */
+    left: 0; /* Position at the left */
+    width: 100%; /* Span the full width of the page */
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+.header-text {
+    background-color: #f40434; /* Red background for the text */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Add padding around the text */
+    font-size: 1.5rem; /* Adjust font size */
+    display: inline-block; /* Make the background only cover the text */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
