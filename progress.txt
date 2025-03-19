@@ -1,0 +1,5 @@
+1. Built the youtube api and the functions to extract video ids from the youtube video url 
+
+2. Built the model too, just have to learn to save and load it efficiently
+
+3. starting with web development, thinking of using react as front end and flask in the backend
