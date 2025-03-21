@@ -25,6 +25,7 @@
   font-size: 1.5rem; /* 24px */
   font-weight: bold; /* Bold text */
   margin: 0; /* Remove default margin */
+  align-items: left; /* Align to the left */
 }
 
 /* Footer Content */
