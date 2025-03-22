@@ -16,11 +16,11 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-class URLreq(BaseModel):
+class URLRequest(BaseModel):
     url: str
 
 @app.post("/video")
-async def analyze(url_request: URLreq):
+async def analyze(url_request: URLRequest):
     logging.info(f"Received URL: {url_request.url}")
     video_id = yt_api.get_video_id(url_request.url)
     if not video_id:

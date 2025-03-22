@@ -2,4 +2,4 @@
 
 2. Built the model too, just have to learn to save and load it efficiently
 
-3. starting with web development, thinking of using react as front end and flask in the backend
+3. Starting with web development, Using react as front end and FastAPI in the backend

@@ -11,7 +11,7 @@ function Input() {
         setError('');
         setVideoId('');
         try {
-            const response = await fetch('http://localhost:8000/video', { // Update the URL to match FastAPI server
+            const response = await fetch('http://localhost:8000/video', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
