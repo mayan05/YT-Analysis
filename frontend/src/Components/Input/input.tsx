@@ -11,13 +11,14 @@ function Input() {
         setError('');
         setVideoId('');
         try {
-            const response = await fetch('http://localhost:5173/video', {
+            const response = await fetch('http://localhost:8000/video', { // Update the URL to match FastAPI server
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ url }),
             });
+            console.log(response);
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.detail);
@@ -53,12 +54,12 @@ function Input() {
             </form>
             {videoId && (
                 <div className='res-container'>
-                    <h2 className='res-heading'>The video id is: {videoId}</h2>
+                    <h3 className='res-heading'>The video id is: {videoId}</h3>
                 </div>
             )}
             {error && (
                 <div className='error-container'>
-                    <h2 className='error-heading'>Error: {error}</h2>
+                    <h3 className='error-heading'>Error: {error}</h3>
                 </div>
             )}
         </div>
