@@ -6,10 +6,14 @@ function Input() {
     const [videoId, setVideoId] = useState('');
     const [error, setError] = useState('');
 
+    const [title, setTitle] = useState('');
+    const [upload, setUpload] = useState('');
+    const [views, setViews] = useState(0);
+    const [likes, setLikes] = useState(0);
+
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         setError('');
-        setVideoId('');
         try {
             const response = await fetch('http://localhost:8000/video', {
                 method: 'POST',
@@ -18,16 +22,16 @@ function Input() {
                 },
                 body: JSON.stringify({ url }),
             });
-            console.log(response);
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.detail);
+                throw new Error(errorData.detail || 'Failed to fetch video details');
             }
             const data = await response.json();
-            if (!data || !data.video_id) {
-                throw new Error('Invalid response from server');
-            }
             setVideoId(data.video_id);
+            setTitle(data.title);
+            setUpload(data.published_at);
+            setViews(data.views);
+            setLikes(data.likes);
         } catch (error) {
             if (error instanceof Error) {
                 setError(error.message);
@@ -54,7 +58,12 @@ function Input() {
             </form>
             {videoId && (
                 <div className='res-container'>
-                    <h3 className='res-heading'>The video id is: {videoId}</h3>
+                    <div className='output-box'>
+                        <p className='output-text'>Title: {title}</p>
+                        <p className='output-text'>Upload Date: {upload}</p>
+                        <p className='output-text'>Views: {views}</p>
+                        <p className='output-text'>Likes: {likes}</p>
+                    </div>
                 </div>
             )}
             {error && (

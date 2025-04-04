@@ -1,100 +1,113 @@
 /* Container for the input section */
 .container {
-  max-width: 400px; /* Limit the width */
-  width: 100%; /* Take full width up to max-width */
-  padding: 1.5rem; /* Add padding */
-  background-color: #ffffff; /* White background */
-  border-radius: 0.5rem; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  margin: 0 auto; /* Center horizontally using auto margins */
+  max-width: 400px;
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
-  position: absolute; /* Position the container absolutely */
-  top: 40%; /* Move the container down by 40% of the viewport height (adjust as needed) */
-  left: 50%; /* Move the container right by 50% of the viewport width */
-  transform: translate(-50%, -50%); /* Shift the container back by 50% of its own width and height */
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Heading for the input section */
 .heading {
-  font-size: 1.5rem; /* 24px */
-  font-weight: bold; /* Bold text */
-  margin-bottom: 1rem; /* Space below the heading */
-  text-align: center; /* Center the heading */
-  color: #1f2937; /* Dark gray text */
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #1f2937;
 }
 
 /* Form layout */
 .form {
-  display: flex; /* Use Flexbox for layout */
-  gap: 0.75rem; /* Space between input and button */
+  display: flex;
+  gap: 0.75rem;
 }
 
 /* Input field */
 .input-box {
-  flex: 1; /* Take up remaining space */
-  padding: 0.75rem; /* Add padding */
-  border: 1px solid #d1d5db; /* Light gray border */
-  border-radius: 0.5rem; /* Rounded corners */
-  outline: none; /* Remove default outline */
-  font-size: 1rem; /* 16px */
-  color: #1f2937; /* Dark gray text */
-  transition: border-color 0.3s ease; /* Smooth transition for border color */
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  outline: none;
+  font-size: 1rem;
+  color: #1f2937;
+  transition: border-color 0.3s ease;
 }
 
 /* Input field focus state */
 .input-box:focus {
-  border-color: #3b82f6; /* Blue border on focus */
+  border-color: #3b82f6;
 }
 
 /* Submit button */
 .submit-button {
-  background-color: #3b82f6; /* Blue background */
-  color: white; /* White text */
-  padding: 0.75rem 1.5rem; /* Add padding */
-  border: none; /* Remove border */
-  border-radius: 0.5rem; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  font-size: 1rem; /* 16px */
-  font-weight: 500; /* Medium font weight */
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
 }
 
 /* Submit button hover state */
 .submit-button:hover {
-  background-color: #2563eb; /* Darker blue on hover */
+  background-color: #2563eb;
 }
 
-/* Result container */
+/* Updated result container */
 .res-container {
-  margin-top: 1rem; /* Space above the result container */
-  padding: 1rem; /* Add padding */
-  background-color: #e0f7fa; /* Light cyan background */
-  border-radius: 0.5rem; /* Rounded corners */
-  text-align: center; /* Center the text */
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Gradient effect */
+  border-radius: 1rem; /* Softer edges */
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Result heading */
-.res-heading {
-  font-size: 1.25rem; /* 20px */
-  font-weight: bold; /* Bold text */
-  color: #00796b; /* Teal text */
+/* Styled output text */
+.output-text {
+  color: #0f172a; /* Deep navy for better readability */
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 5px 0;
 }
+
+/* Improve spacing */
+.output-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 
 /* Error container */
 .error-container {
-  margin-top: 1rem; /* Space above the error container */
-  padding: 1rem; /* Add padding */
-  background-color: #ffebee; /* Light red background */
-  border-radius: 0.5rem; /* Rounded corners */
-  text-align: center; /* Center the text */
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #ffebee;
+  border-radius: 0.5rem;
+  text-align: center;
 }
 
 /* Error heading */
 .error-heading {
-  font-size: 1.25rem; /* 20px */
-  font-weight: bold; /* Bold text */
-  color: #d32f2f; /* Red text */
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #d32f2f;
 }

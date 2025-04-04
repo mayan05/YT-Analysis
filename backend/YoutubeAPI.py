@@ -4,7 +4,7 @@ from urllib.parse import urlparse, parse_qs
 
 class YTapi():   
 
-    apikey = "AIzaSyArSGWO9fyw5-nP2nXVx2RD4gTLXNZDz4M" 
+    apikey = "AIzaSyArSGWO9fyw5-nP2nVXv2RD4gTLXNZDz4M" 
 
     def __init__(self):
         self.youtube = build("youtube", "v3", developerKey=YTapi.apikey)
@@ -25,6 +25,31 @@ class YTapi():
                 return parsed_url.path.split('/')[2]
     
         return None
+    
+    def video_details(self, video_id):
+        request = self.youtube.videos().list(
+            part="snippet,contentDetails,statistics",
+            id=video_id
+        )
+        response = request.execute()
+
+        if not response["items"]:
+            return None
+
+        video_info = response["items"][0] # summary of the video info
+
+        title = video_info["snippet"]["title"]
+        published_at = video_info["snippet"]["publishedAt"]
+        view_count = video_info["statistics"].get("viewCount", 0)
+        like_count = video_info["statistics"].get("likeCount", 0)
+        
+        return {
+            "video_id": video_id,
+            "title": title,
+            "published_at": published_at,
+            "views": view_count,
+            "likes": like_count,
+        }
 
     def get_youtube_comments(self, video_id, max_results=50):
         
@@ -53,8 +78,3 @@ class YTapi():
 
         df = pd.DataFrame({'Comments': comments, 'Likes': Likes})
         return df
-    
-
-api = YTapi()
-
-print(api.get_video_id('https://www.youtube.com/watch?v=3cZNbwTXixU&t'))

@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from datetime import datetime
 from YoutubeAPI import YTapi
 import logging
 
@@ -10,10 +11,10 @@ yt_api = YTapi()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins
+    allow_origins=["http://localhost:5173"],  
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all methods
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class URLRequest(BaseModel):
@@ -21,12 +22,20 @@ class URLRequest(BaseModel):
 
 @app.post("/video")
 async def analyze(url_request: URLRequest):
-    logging.info(f"Received URL: {url_request.url}")
     video_id = yt_api.get_video_id(url_request.url)
     if not video_id:
-        logging.error("Invalid YouTube URL")
         raise HTTPException(status_code=400, detail="Invalid YouTube URL")
-    
-    response = {"video_id": video_id}
-    logging.info(f"Response: {response}")
-    return response
+    details = yt_api.video_details(video_id)
+    if not details:
+        raise HTTPException(status_code=400, detail="Could not fetch Video Details!")
+
+    raw_date = details.get("published_at", "")
+    if raw_date:
+        try:
+            dt = datetime.strptime(raw_date, "%Y-%m-%dT%H:%M:%SZ")
+            formatted_date = dt.strftime("%d %B, %Y")
+            details["published_at"] = formatted_date
+        except ValueError:
+            pass 
+
+    return details
