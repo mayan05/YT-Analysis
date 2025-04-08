@@ -6,6 +6,8 @@
     background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
     border-radius: 1rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 0;
 }
 
 .output-heading {
