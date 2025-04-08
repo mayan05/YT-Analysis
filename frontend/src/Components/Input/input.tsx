@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import './input.css';
 
-function Input() {
-    const [url, setUrl] = useState('');
-    const [videoId, setVideoId] = useState('');
-    const [error, setError] = useState('');
+interface InputProps {
+    onVideoFetch: (videoDetails: any) => void;
+}
 
-    const [title, setTitle] = useState('');
-    const [upload, setUpload] = useState('');
-    const [views, setViews] = useState(0);
-    const [likes, setLikes] = useState(0);
+function Input({ onVideoFetch }: InputProps) {
+    const [url, setUrl] = useState('');
+    const [error, setError] = useState('');
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -27,11 +25,7 @@ function Input() {
                 throw new Error(errorData.detail || 'Failed to fetch video details');
             }
             const data = await response.json();
-            setVideoId(data.video_id);
-            setTitle(data.title);
-            setUpload(data.published_at);
-            setViews(data.views);
-            setLikes(data.likes);
+            onVideoFetch(data);
         } catch (error) {
             if (error instanceof Error) {
                 setError(error.message);
@@ -56,16 +50,6 @@ function Input() {
                     Submit
                 </button>
             </form>
-            {videoId && (
-                <div className='res-container'>
-                    <div className='output-box'>
-                        <p className='output-text'>Title: {title}</p>
-                        <p className='output-text'>Upload Date: {upload}</p>
-                        <p className='output-text'>Views: {views}</p>
-                        <p className='output-text'>Likes: {likes}</p>
-                    </div>
-                </div>
-            )}
             {error && (
                 <div className='error-container'>
                     <h3 className='error-heading'>Error: {error}</h3>

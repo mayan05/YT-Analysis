@@ -1,17 +1,21 @@
-import React from 'react';
+import { useState } from 'react';
 import './App.css';
-import Header from './Components/Header/header';
+import Header from './Components/Header/Header';
 import Footer from './Components/Footer/footer';
 import Input from './Components/Input/input';
+import Output from './Components/Output/output';
 
 function App() {
+    const [videoDetails, setVideoDetails] = useState(null);
+
     return (
-        <div className = 'app'>
+        <div className='app'>
             <Header />
-            <Input />
+            <Input onVideoFetch={setVideoDetails} />
+            <Output videoDetails={videoDetails} />
             <Footer />
         </div>
     );
 }
 
-export default App;
+export default App; 

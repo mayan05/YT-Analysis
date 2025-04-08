@@ -42,6 +42,7 @@ class YTapi():
         published_at = video_info["snippet"]["publishedAt"]
         view_count = video_info["statistics"].get("viewCount", 0)
         like_count = video_info["statistics"].get("likeCount", 0)
+        comment_count = video_info["statistics"].get("commentCount", 0)
         
         return {
             "video_id": video_id,
@@ -49,6 +50,7 @@ class YTapi():
             "published_at": published_at,
             "views": view_count,
             "likes": like_count,
+            "comments": comment_count,
         }
 
     def get_youtube_comments(self, video_id, max_results=50):
