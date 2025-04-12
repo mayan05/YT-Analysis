@@ -1,5 +1,0 @@
-1. Built the youtube api and the functions to extract video ids from the youtube video url 
-
-2. Built the model too, just have to learn to save and load it efficiently
-
-3. Starting with web development, Using react as front end and FastAPI in the backend
